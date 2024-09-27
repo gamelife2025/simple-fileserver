@@ -9,12 +9,12 @@ import (
 )
 
 var (
-	auth string = *flag.String("auth", "", "example: auth123")
-	addr string = *flag.String("addr", "127.0.0.1:8000", "")
+	auth = flag.String("auth", "", "example: auth123")
+	addr = flag.String("addr", "127.0.0.1:8000", "")
 )
 
 func middlewareAUTH(c *gin.Context) {
-	if c.GetHeader("auth") != auth {
+	if c.GetHeader("auth") != *auth {
 		c.Status(http.StatusForbidden)
 		c.Abort()
 	}
@@ -24,9 +24,9 @@ func main() {
 	flag.Parse()
 
 	router := gin.Default()
-	if auth != "" {
+	if *auth != "" {
 		router.Use(middlewareAUTH)
 	}
 	router.POST("/upload", simplefileserver.UploadFiles)
-	router.Run(addr)
+	router.Run(*addr)
 }
