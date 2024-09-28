@@ -28,5 +28,6 @@ func main() {
 		router.Use(middlewareAUTH)
 	}
 	router.POST("/upload", simplefileserver.UploadFiles)
+	router.GET("/*filepath", simplefileserver.Brower)
 	router.Run(*addr)
 }
