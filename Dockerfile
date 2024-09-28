@@ -8,6 +8,6 @@ ENV CGO_ENABLED=0
 
 RUN go build ./cmd/simple-fileserver
 
-FROM scratch
+FROM alpine
 COPY --from=builder /root/simple-fileserver /usr/local/bin/simple-fileserver
 ENTRYPOINT [ "simple-fileserver" ]
