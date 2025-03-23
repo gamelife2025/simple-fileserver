@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	auth = flag.String("auth", "", "example: auth123")
+	auth = flag.String("auth", "", "example: auth123") //控制上传认证
 	addr = flag.String("addr", "127.0.0.1:8000", "")
 )
 
@@ -24,10 +24,10 @@ func main() {
 	flag.Parse()
 
 	router := gin.Default()
+	router.GET("/*filepath", simplefileserver.Brower)
 	if *auth != "" {
 		router.Use(middlewareAUTH)
 	}
 	router.POST("/upload", simplefileserver.UploadFiles)
-	router.GET("/*filepath", simplefileserver.Brower)
 	router.Run(*addr)
 }
