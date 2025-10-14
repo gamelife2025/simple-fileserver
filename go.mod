@@ -1,4 +1,4 @@
-module github.com/zqb7/simple-fileserver
+module github.com/gamelife2025/simple-fileserver
 
 go 1.22.3
 

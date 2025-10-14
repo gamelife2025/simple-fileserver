@@ -4,8 +4,8 @@ import (
 	"flag"
 	"net/http"
 
+	simplefileserver "github.com/gamelife2025/simple-fileserver"
 	"github.com/gin-gonic/gin"
-	simplefileserver "github.com/zqb7/simple-fileserver"
 )
 
 var (
