@@ -21,6 +21,7 @@ func middlewareAUTH(c *gin.Context) {
 }
 
 func main() {
+	flag.StringVar(&simplefileserver.DEFAULT_DIR_ROOT, "dir", "", "/upload")
 	flag.Parse()
 
 	router := gin.Default()
